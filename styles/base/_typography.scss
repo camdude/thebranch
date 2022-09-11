@@ -1,0 +1,74 @@
+@font-face {
+  font-family: "Averta Demo PE Cutted Demo";
+  src: url("../../public/AvertaDemoPECuttedDemo-Regular.otf") format("otf");
+}
+
+@font-face {
+  font-family: "Proxima Nova";
+  src: url("../../public/Proxima\ Nova\ Reg.otf") format("otf");
+}
+
+body {
+  font-family: $default-font-family;
+  font-weight: 400;
+  line-height: 1.6;
+  font-size: $default-font-size;
+  color: $default-font-color;
+}
+
+.heading-primary,
+.heading-secondary,
+.heading-tertiary {
+  font-family: $default-font-family-heading;
+  font-weight: 500;
+}
+
+.heading-primary {
+  margin-bottom: 2rem;
+  font-size: 4rem;
+  line-height: 1.25;
+  text-transform: capitalize;
+}
+
+.heading-secondary {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-size: 3rem;
+  text-transform: capitalize;
+}
+
+.heading-tertiary {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-size: 1.8rem;
+  text-transform: capitalize;
+  font-style: italic;
+}
+
+.paragraph {
+  font-family: $default-font-family-paragraph;
+  font-size: $default-font-size;
+  line-height: 1.2;
+  text-align: justify;
+
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+}
+
+li {
+  margin-left: 3rem;
+}
+
+.link {
+  &:link,
+  &:visited {
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  &:hover,
+  &:active {
+    text-decoration: underline;
+  }
+}
