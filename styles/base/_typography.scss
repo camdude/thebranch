@@ -18,34 +18,39 @@ body {
 
 .heading-primary,
 .heading-secondary,
-.heading-tertiary {
+.heading-tertiary,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: $default-font-family-heading;
   font-weight: 500;
 }
 
-.heading-primary {
+.heading-primary, h1 {
   margin-bottom: 2rem;
   font-size: 4rem;
   line-height: 1.25;
   text-transform: capitalize;
 }
 
-.heading-secondary {
+.heading-secondary, h2 {
   display: inline-block;
   margin-bottom: 1rem;
   font-size: 3rem;
   text-transform: capitalize;
 }
 
-.heading-tertiary {
+.heading-tertiary, h3 {
   display: inline-block;
   margin-bottom: 0.5rem;
-  font-size: 1.8rem;
+  font-size: 2rem;
   text-transform: capitalize;
-  font-style: italic;
 }
 
-.paragraph {
+.paragraph, p {
   font-family: $default-font-family-paragraph;
   font-size: $default-font-size;
   line-height: 1.2;

@@ -1,0 +1,33 @@
+.Button {
+  display: inline-block;
+  margin: 1rem 0;
+  border: none;
+  padding: 2rem 6rem;
+  box-shadow: 0 0 0.2rem 0 $color-black;
+  background-color: $color-secondary;
+  color: $color-white;
+  font-weight: bold;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  width: 100%;
+
+  &:hover {
+    background-color: $color-secondary-dark;
+    color: $color-grey;
+    cursor: pointer;
+  }
+
+  &--disabled {
+    background-color: $color-grey;
+    // text-decoration: line-through;
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: $color-grey;
+      color: $color-white;
+      cursor: not-allowed;
+    }
+  }
+}

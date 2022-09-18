@@ -10,7 +10,13 @@
 @import "base/utilities";
 
 // Components
+@import "components/button";
 
 // Layout
+@import "layout/blockContent";
+@import "layout/footer";
+@import "layout/navbar";
+@import "layout/section";
 
 // Pages
+@import "pages/page";

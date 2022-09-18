@@ -1,0 +1,44 @@
+.Page {
+    &__banner {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 0 20%;
+        width: 100%;
+        background: $color-primary;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 3rem 20%;
+        width: 100%;
+        color: $color-black;
+        background: $color-grey-light;
+      
+        & p > a:link,
+        & p > a:visited {
+          color: $color-secondary-light;
+      
+          &:hover,
+          &:active {
+            color: $color-primary-dark;
+          }
+        }
+      
+        @include respond(tab-land) {
+          padding: 2rem 10%;
+        }
+      
+        @include respond(tab-port) {
+          padding: 2rem 4rem;
+        }
+      
+        @include respond(phone) {
+          padding: 1.5rem 2rem;
+        }
+      }
+      
+}
+

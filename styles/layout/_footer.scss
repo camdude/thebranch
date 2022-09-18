@@ -1,0 +1,21 @@
+.Footer {
+  display: block;
+  background: $color-secondary-dark;
+  color: $color-grey-light;
+
+  &__copyright {
+    padding: 0.5rem 20%;
+    background-color: $color-grey-dark;
+    color: $color-grey-light;
+    font-size: 1.2rem;
+    text-align: center;
+
+    @include respond(tab-land) {
+      padding: 0.5rem 10%;
+    }
+
+    @include respond(tab-port) {
+      padding: 0.5rem 4rem;
+    }
+  }
+}
