@@ -66,7 +66,14 @@
     color: $color-primary-dark;
     cursor: pointer;
 
-    &:hover {
+    &:link,
+    &:visited {
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    &:hover,
+    &:active {
       text-decoration: underline;
       color: $color-primary-light;
     }

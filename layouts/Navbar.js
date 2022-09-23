@@ -2,6 +2,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import Logo from "../public/logo_full_colour_RGB.png";
 
 export default function Navbar({ paths = { sections: [] } }) {
@@ -11,6 +12,7 @@ export default function Navbar({ paths = { sections: [] } }) {
       <div className="Navbar__header">
         <div className="Navbar__menu">
           <p
+          className="Navbar__icon"
             onClick={() => {
               setnavOpen(!navOpen);
             }}
@@ -20,7 +22,7 @@ export default function Navbar({ paths = { sections: [] } }) {
           {/* <FontAwesomeIcon
             className="Navbar__icon"
             size="lg"
-            icon="bars"
+            icon={faBars}
             onClick={() => {
               setnavOpen(!navOpen);
             }}

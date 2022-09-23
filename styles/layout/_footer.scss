@@ -2,6 +2,57 @@
   display: block;
   background: $color-secondary-dark;
   color: $color-grey-light;
+  text-align: start;
+
+  &__columns {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin: 0 20%;
+
+    @include respond(tab-land) {
+      margin: 0 10%;
+      flex-direction: column;
+    }
+  }
+
+  &__row {
+    margin: 3rem 0;
+    padding: 0 2rem;
+    width: 33%;
+
+    &:not(:last-child) {
+      border-right: 1px solid $color-secondary;
+    }
+
+    @include respond(tab-land) {
+      margin: 0;
+      padding: 2rem 1rem;
+      width: 100%;
+
+      &:not(:last-child) {
+        border-right: none;
+        border-bottom: 1px solid $color-secondary;
+      }
+    }
+  }
+
+  &__list {
+    list-style: none;
+  }
+
+  &__item {
+    margin-left: 1rem;
+    line-height: 2;
+  }
+
+  &__text {
+    text-align: left;
+  }
+
+  &__icon {
+    font-size: 1rem;
+  }
 
   &__copyright {
     padding: 0.5rem 20%;

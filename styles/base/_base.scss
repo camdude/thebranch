@@ -29,6 +29,19 @@ body {
   }
 }
 
+a {
+  color: $color-secondary;
+
+  &:link,
+  &:visited {
+  }
+
+  &:hover,
+  &:active {
+    color: $color-secondary-light;
+  }
+}
+
 img {
   max-width: 100%;
   height: auto;

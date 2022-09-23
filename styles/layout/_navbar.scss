@@ -42,6 +42,8 @@
     display: block;
     margin: 0 auto;
     cursor: pointer;
+    z-index: 1000;
+    color: $color-danger;
 
     &:hover {
       opacity: 80%;

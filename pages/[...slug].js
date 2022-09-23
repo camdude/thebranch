@@ -1,5 +1,5 @@
 import BlockContent from "@sanity/block-content-to-react";
-import { getNavigation, getPagebySlug, urlFor } from "../lib/api";
+import { getFooter, getNavigation, getPagebySlug, urlFor } from "../lib/api";
 import { useRouter } from "next/router";
 import ImageWithHideOnError from "../hooks/ImageWithHideOnError";
 import Section from "../layouts/Section";
@@ -35,6 +35,18 @@ const serializers = {
     return <ol className="block__list" {...props} />;
   },
   listItem: (props) => <li className="block__listItem" {...props} />,
+  marks: {
+    link: ({ mark, children }) => {
+      const { blank, href } = mark;
+      return blank ? (
+        <a className="block__a" href={href} target="_blank" rel="noreferrer">
+          {children}
+        </a>
+      ) : (
+        <a className="block__a" href={href}>{children}</a>
+      );
+    },
+  },
   types: {
     block: (props) => {
       // Check if we have an override for the “style”
@@ -51,15 +63,18 @@ const serializers = {
   },
 };
 
-export default function Page({ navPaths, page }) {
+export default function Page({ navPaths, page, footerLinks }) {
   const router = useRouter();
-  console.log(page, !page?.length);
 
   if (!router.isFallback && !page?.length) {
     return (
-      <main className="main-body">
-        <h1 className="heading-primary u-center-text">ERROR 404</h1>
-      </main>
+      <div>
+        <Navbar paths={navPaths} />
+        <main className="main-body">
+          <h1 className="heading-primary u-center-text">ERROR 404</h1>
+        </main>
+        <Footer links={footerLinks}/>
+      </div>
     );
   }
 
@@ -101,7 +116,7 @@ export default function Page({ navPaths, page }) {
           }
         })}
       </main>
-      <Footer />
+      <Footer links={footerLinks}/>
     </div>
   );
 }
@@ -109,16 +124,16 @@ export default function Page({ navPaths, page }) {
 export async function getStaticProps({ params }) {
   const navPaths = await getNavigation();
   const page = await getPagebySlug(params.slug[params.slug.length - 1]);
+  const footerLinks = await getFooter();
 
   return {
-    props: { navPaths, page },
+    props: { navPaths, page, footerLinks },
     revalidate: 1,
   };
 }
 
 export async function getStaticPaths() {
   const nav = await getNavigation();
-  console.log(nav);
   var navPaths = [];
   nav.sections.map((s) => {
     if (s.links) {

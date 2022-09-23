@@ -1,9 +1,9 @@
 import Head from "next/head";
 import Footer from "../layouts/Footer";
 import Navbar from "../layouts/Navbar";
-import { getHomepage, getNavigation } from "../lib/api";
+import { getFooter, getHomepage, getNavigation } from "../lib/api";
 
-export default function Home({ navPaths, page }) {
+export default function Home({ navPaths, page, footerLinks }) {
   return (
     <div>
       <Head>
@@ -23,7 +23,7 @@ export default function Home({ navPaths, page }) {
           similique sequi ipsa.
         </p>
       </main>
-      <Footer />
+      <Footer links={footerLinks}/>
     </div>
   );
 }
@@ -31,9 +31,10 @@ export default function Home({ navPaths, page }) {
 export async function getStaticProps() {
   const navPaths = await getNavigation();
   const page = await getHomepage();
+  const footerLinks = await getFooter();
 
   return {
-    props: { navPaths, page: page[0].homepage },
+    props: { navPaths, page: page[0].homepage, footerLinks },
     revalidate: 1,
   };
 }
