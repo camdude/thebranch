@@ -1,6 +1,15 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons";
+import {
+  faFacebookSquare,
+  faInstagram,
+  faYoutube,
+} from "@fortawesome/free-brands-svg-icons";
+import {
+  faEnvelope,
+  faLocationPin,
+  faPhone,
+} from "@fortawesome/free-solid-svg-icons";
 import moment from "moment";
+import Icon from "../components/Icon";
 
 const Footer = ({ links }) => {
   return (
@@ -12,18 +21,20 @@ const Footer = ({ links }) => {
             <li className="Footer__item">
               <div>
                 <a className="link" href={links.socials.fb} target="blank">
-                  {/* <FontAwesomeIcon className="icon" size="2xs" icon={faFacebookSquare}/> */}
+                  <Icon icon={faFacebookSquare} />
                   Facebook
                 </a>
               </div>
             </li>
             <li className="Footer__item">
               <a className="link" href={links.socials.ig} target="blank">
+                <Icon icon={faInstagram} />
                 Instagram
               </a>
             </li>
             <li className="Footer__item">
               <a className="link" href={links.socials.yt} target="blank">
+                <Icon icon={faYoutube} />
                 Youtube
               </a>
             </li>
@@ -33,14 +44,12 @@ const Footer = ({ links }) => {
           <h3 className="heading-tertiary">Contact</h3>
           <ul className="Footer__list">
             <li className="Footer__item">
-              <p className="Footer__text paragraph">{links.details.address}</p>
-            </li>
-            <li className="Footer__item">
               <a
                 className="link"
                 href={`mailto:${links.details.email}`}
                 target="blank"
               >
+                <Icon icon={faEnvelope} />
                 {links.details.email}
               </a>
             </li>
@@ -50,8 +59,12 @@ const Footer = ({ links }) => {
                 href={`tel:${links.details.phone.replace(/\s+/g, "")}`}
                 target="blank"
               >
+                <Icon icon={faPhone} />
                 {links.details.phone}
               </a>
+            </li>
+            <li className="Footer__item">
+              <p className="Footer__text paragraph">{links.details.address}</p>
             </li>
           </ul>
         </div>
