@@ -5,7 +5,8 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import {
   faEnvelope,
-  faLocationPin,
+  faLink,
+  faMapLocationDot,
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 import moment from "moment";
@@ -20,21 +21,39 @@ const Footer = ({ links }) => {
           <ul className="Footer__list">
             <li className="Footer__item">
               <div>
-                <a className="link" href={links.socials.fb} target="blank">
+                <div className="Footer__icon">
                   <Icon icon={faFacebookSquare} />
+                </div>
+                <a
+                  className="Footer__text link"
+                  href={links.socials.fb}
+                  target="blank"
+                >
                   Facebook
                 </a>
               </div>
             </li>
             <li className="Footer__item">
-              <a className="link" href={links.socials.ig} target="blank">
+              <div className="Footer__icon">
                 <Icon icon={faInstagram} />
+              </div>
+              <a
+                className="Footer__text link"
+                href={links.socials.ig}
+                target="blank"
+              >
                 Instagram
               </a>
             </li>
             <li className="Footer__item">
-              <a className="link" href={links.socials.yt} target="blank">
+              <div className="Footer__icon">
                 <Icon icon={faYoutube} />
+              </div>
+              <a
+                className="Footer__text link"
+                href={links.socials.yt}
+                target="blank"
+              >
                 Youtube
               </a>
             </li>
@@ -44,27 +63,40 @@ const Footer = ({ links }) => {
           <h3 className="heading-tertiary">Contact</h3>
           <ul className="Footer__list">
             <li className="Footer__item">
+              <div className="Footer__icon">
+                <Icon icon={faEnvelope} />
+              </div>
               <a
-                className="link"
+                className="Footer__text link"
                 href={`mailto:${links.details.email}`}
                 target="blank"
               >
-                <Icon icon={faEnvelope} />
                 {links.details.email}
               </a>
             </li>
             <li className="Footer__item">
+              <div className="Footer__icon">
+                <Icon icon={faPhone} />
+              </div>
               <a
-                className="link"
+                className="Footer__text link"
                 href={`tel:${links.details.phone.replace(/\s+/g, "")}`}
                 target="blank"
               >
-                <Icon icon={faPhone} />
                 {links.details.phone}
               </a>
             </li>
             <li className="Footer__item">
-              <p className="Footer__text paragraph">{links.details.address}</p>
+              <div className="Footer__icon">
+                <Icon icon={faMapLocationDot} />
+              </div>
+              <a
+                className="Footer__text link"
+                href={`https://www.google.com/maps/search/?api=1&query=${links.details.address}`}
+                target="blank"
+              >
+                {links.details.address}
+              </a>
             </li>
           </ul>
         </div>
@@ -74,7 +106,10 @@ const Footer = ({ links }) => {
             {links.member.map((l) => {
               return (
                 <li className="Footer__item" key={l._key}>
-                  <a className="link" href={l.link} target="blank">
+                  <div className="Footer__icon">
+                    <Icon icon={faLink} />
+                  </div>
+                  <a className="Footer__text link" href={l.link} target="blank">
                     {l.label}
                   </a>
                 </li>

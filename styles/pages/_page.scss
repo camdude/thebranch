@@ -6,6 +6,10 @@
         padding: 0 20%;
         width: 100%;
         background: $color-primary;
+
+        @include respond(tab-port) {
+          padding: 0;
+        }
     }
 
     &__content {

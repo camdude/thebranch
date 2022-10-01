@@ -4,8 +4,8 @@
   border: none;
   padding: 2rem 6rem;
   box-shadow: 0 0 0.2rem 0 $color-black;
-  background-color: $color-secondary;
-  color: $color-white;
+  background-color: $color-tertiary;
+  color: $color-grey-light;
   font-weight: bold;
   font-size: 1.8rem;
   text-transform: uppercase;
@@ -14,8 +14,8 @@
   width: 100%;
 
   &:hover {
-    background-color: $color-secondary-dark;
-    color: $color-grey;
+    background-color: $color-tertiary-dark;
+    color: $color-grey-light;
     cursor: pointer;
   }
 

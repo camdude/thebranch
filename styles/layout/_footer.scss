@@ -8,11 +8,19 @@
     display: flex;
     justify-content: center;
     flex-direction: row;
-    margin: 0 20%;
+    padding: 0 20%;
 
     @include respond(tab-land) {
-      margin: 0 10%;
+      padding: 0 10%;
       flex-direction: column;
+    }
+
+    @include respond(tab-port) {
+      padding: 0 4rem;
+    }
+
+    @include respond(phone) {
+      padding: 0 2rem;
     }
   }
 
@@ -44,10 +52,23 @@
   &__item {
     margin-left: 1rem;
     line-height: 2;
+    width: 100%;
+
+    @include respond(tab-land) {
+      display: inline-block;
+    }
+  }
+
+  &__icon {
+    display: inline;
+    margin: 0 0.4rem;
+    color: $color-secondary
   }
 
   &__text {
+    display: inline;
     text-align: left;
+    color: $color-white;
   }
 
   &__copyright {
