@@ -4,9 +4,12 @@ import { useRouter } from "next/router";
 import ImageWithHideOnError from "../hooks/ImageWithHideOnError";
 import Section from "../layouts/Section";
 import Button from "../components/Button";
+import YouTube from "../components/YouTube";
 import Head from "next/head";
 import Navbar from "../layouts/Navbar";
 import Footer from "../layouts/Footer";
+import TextBlockWithImage from "../components/TextBlockWithImage";
+import Image from "next/image";
 
 const overrides = {
   h1: (props) => <h1 className="block__h1" {...props} />,
@@ -43,7 +46,9 @@ const serializers = {
           {children}
         </a>
       ) : (
-        <a className="block__a" href={href}>{children}</a>
+        <a className="block__a" href={href}>
+          {children}
+        </a>
       );
     },
   },
@@ -57,8 +62,20 @@ const serializers = {
         : // otherwise, fallback to the provided default with all props
           BlockContent.defaultSerializers.types.block(props);
     },
+    image: ({ node: { asset, alt, position = "center", crop, hotspot } }) => {
+      return (
+        <img
+          src={urlFor({ asset, crop, hotspot }).width(300).fit("max").url()}
+          alt={alt}
+          style={{ float: position }}
+        />
+      );
+    },
     button: (props) => {
       return <Button href={props.node.url}>{props.node.title}</Button>;
+    },
+    youtube: ({ node: { url } }) => {
+      return <YouTube url={url} />;
     },
   },
 };
@@ -73,7 +90,7 @@ export default function Page({ navPaths, page, footerLinks }) {
         <main className="main-body">
           <h1 className="heading-primary u-center-text">ERROR 404</h1>
         </main>
-        <Footer links={footerLinks}/>
+        <Footer links={footerLinks} />
       </div>
     );
   }
@@ -99,6 +116,7 @@ export default function Page({ navPaths, page, footerLinks }) {
             />
           </div>
         ) : null}
+        {console.log(page[0].pageBuilder)}
         {page[0].pageBuilder.map((s) => {
           switch (s._type) {
             case "textBlock":
@@ -106,6 +124,18 @@ export default function Page({ navPaths, page, footerLinks }) {
                 <Section color={s.colour} key={s._key}>
                   <BlockContent blocks={s.content} serializers={serializers} />
                 </Section>
+              );
+            case "textBlockWithImage":
+              return (
+                <TextBlockWithImage
+                  key={s._key}
+                  color={s.colour}
+                  title={s.title}
+                  image={s.image}
+                  cta={s.cta}
+                >
+                  {s.content}
+                </TextBlockWithImage>
               );
             case "gallery":
               return <div key={s._key}></div>;
@@ -116,7 +146,7 @@ export default function Page({ navPaths, page, footerLinks }) {
           }
         })}
       </main>
-      <Footer links={footerLinks}/>
+      <Footer links={footerLinks} />
     </div>
   );
 }

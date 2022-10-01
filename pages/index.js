@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Footer from "../layouts/Footer";
 import Navbar from "../layouts/Navbar";
+import TextBlockWithImage from "../components/TextBlockWithImage";
 import { getFooter, getHomepage, getNavigation } from "../lib/api";
 
 export default function Home({ navPaths, page, footerLinks }) {
@@ -10,7 +11,7 @@ export default function Home({ navPaths, page, footerLinks }) {
         <title>The Branch Christian Church</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar paths={navPaths}/>
+      <Navbar paths={navPaths} />
       <main className="main-body">
         <h1 className="heading-primary">Heading 1</h1>
         <h2 className="heading-secondary">Heading 2</h2>
@@ -23,7 +24,7 @@ export default function Home({ navPaths, page, footerLinks }) {
           similique sequi ipsa.
         </p>
       </main>
-      <Footer links={footerLinks}/>
+      <Footer links={footerLinks} />
     </div>
   );
 }
