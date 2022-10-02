@@ -104,7 +104,7 @@
 
     &:hover {
       color: $color-black;
-      background-color: $color-grey;
+      background-color: $color-secondary;
     }
 
     @include respond(tab-port) {
@@ -115,6 +115,10 @@
       color: $color-black;
       font-size: $default-font-size;
       background-color: $color-tertiary;
+
+      &:hover {
+        background-color: $color-grey;
+      }
     }
   }
 
