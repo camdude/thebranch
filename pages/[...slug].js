@@ -40,10 +40,14 @@ const serializers = {
   listItem: (props) => <li className="block__listItem" {...props} />,
   marks: {
     internalLink: ({ mark, children }) => {
-      console.log(mark)
+      console.log(mark);
       const { slug = {} } = mark;
       const href = `/${slug.current}`;
-      return <a className="block__a" href={href}>{children}</a>;
+      return (
+        <a className="block__a" href={href}>
+          {children}
+        </a>
+      );
     },
     link: ({ mark, children }) => {
       const { blank, href } = mark;
@@ -92,6 +96,30 @@ export default function Page({ navPaths, page, footerLinks }) {
   if (!router.isFallback && !page?.length) {
     return (
       <div>
+        <Head>
+          <title>The Branch Christian Church</title>
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/apple-touch-icon.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/favicon-32x32.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/favicon-16x16.png"
+          />
+          <link rel="manifest" href="/site.webmanifest" />
+          <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#d8a574" />
+          <meta name="msapplication-TileColor" content="#f6ece3" />
+          <meta name="theme-color" content="#f6ece3" />
+        </Head>
         <Navbar paths={navPaths} />
         <main className="main-body">
           <h1 className="heading-primary u-center-text">ERROR 404</h1>

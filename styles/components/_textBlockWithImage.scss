@@ -1,8 +1,16 @@
 .TextBlockWithImage {
   display: flex;
   flex-direction: row;
-  min-height: 42rem;
+  // min-height: 42rem;
   width: 100%;
+
+  &--right {
+    flex-direction: row;
+  }
+
+  &--left {
+    flex-direction: row-reverse;
+  }
 
   @include respond(tab-port) {
     height: auto;
@@ -10,13 +18,13 @@
   }
 
   &__block {
-    height: auto;
-    width: 50%;
-    padding: 6rem;
+    // height: auto;
+    width: 75%;
+    padding: 4rem;
 
     @include respond(tab-land) {
-        padding: 4rem;
-      }
+      padding: 4rem;
+    }
 
     @include respond(tab-port) {
       width: 100%;
@@ -24,6 +32,96 @@
 
     @include respond(phone) {
       padding: 2rem;
+    }
+
+    &--primary {
+      color: $color-white;
+      background: $color-primary;
+
+      & p > a:link,
+      & p > a:visited {
+        color: $color-secondary;
+
+        &:hover,
+        &:active {
+          color: $color-secondary-dark;
+        }
+      }
+    }
+
+    &--secondary {
+      color: $color-grey-dark;
+      background: $color-secondary;
+
+      & p > a:link,
+      & p > a:visited {
+        color: $color-primary;
+
+        &:hover,
+        &:active {
+          color: $color-primary-dark;
+        }
+      }
+    }
+
+    &--tertiary {
+      color: $color-white;
+      background: $color-tertiary;
+
+      & p > a:link,
+      & p > a:visited {
+        color: $color-primary-dark;
+
+        &:hover,
+        &:active {
+          color: $color-primary;
+        }
+      }
+    }
+
+    &--white {
+      color: $color-grey-dark;
+      background: $color-white;
+
+      & p > a:link,
+      & p > a:visited {
+        color: $color-tertiary;
+
+        &:hover,
+        &:active {
+          color: $color-tertiary-dark;
+        }
+      }
+    }
+
+    &--grey {
+      color: $color-white;
+      background: $color-grey;
+
+      & p > a:link,
+      & p > a:visited {
+        color: $color-tertiary-dark;
+
+        &:hover,
+        &:active {
+          color: $color-tertiary;
+        }
+      }
+    }
+
+    &--black {
+      color: $color-white;
+      background: $color-black;
+
+      & p > a:link,
+      & p > a:visited {
+        color: $color-primary;
+
+        &:hover,
+        &:active {
+          color: $color-primary-dark;
+        }
+      }
     }
   }
 
@@ -58,105 +156,26 @@
   &__text {
   }
 
-  &__image {
-    max-height: 42rem;
-    width: 50%;
-    background-color: $color-black;
+  &__imageContainer {
+    
+    width: 25%;
     overflow: hidden;
+    // box-sizing: content-box;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+
+    background-color: $color-black;
 
     @include respond(tab-port) {
-      max-height: 42rem;
+      // max-height: 42rem;
       width: 100%;
     }
-  }
 
-  &--primary {
-    color: $color-white;
-    background: $color-primary;
-
-    & p > a:link,
-    & p > a:visited {
-      color: $color-secondary;
-
-      &:hover,
-      &:active {
-        color: $color-secondary-dark;
-      }
-    }
-  }
-
-  &--secondary {
-    color: $color-grey-dark;
-    background: $color-secondary;
-
-    & p > a:link,
-    & p > a:visited {
-      color: $color-primary;
-
-      &:hover,
-      &:active {
-        color: $color-primary-dark;
-      }
-    }
-  }
-
-  &--tertiary {
-    color: $color-white;
-    background: $color-tertiary;
-
-    & p > a:link,
-    & p > a:visited {
-      color: $color-primary-dark;
-
-      &:hover,
-      &:active {
-        color: $color-primary;
-      }
-    }
-  }
-
-  &--white {
-    color: $color-grey-dark;
-    background: $color-white;
-
-    & p > a:link,
-    & p > a:visited {
-      color: $color-tertiary;
-
-      &:hover,
-      &:active {
-        color: $color-tertiary-dark;
-      }
-    }
-  }
-
-  &--grey {
-    color: $color-white;
-    background: $color-grey;
-
-    & p > a:link,
-    & p > a:visited {
-      color: $color-tertiary-dark;
-
-      &:hover,
-      &:active {
-        color: $color-tertiary;
-      }
-    }
-  }
-
-  &--black {
-    color: $color-white;
-    background: $color-black;
-
-    & p > a:link,
-    & p > a:visited {
-      color: $color-primary;
-
-      &:hover,
-      &:active {
-        color: $color-primary-dark;
-      }
+    & > span > img {
+      // height: 42rem;
+      width: 100%;
+      object-fit: cover;
     }
   }
 }

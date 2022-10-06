@@ -94,7 +94,31 @@ export default function Home({ navPaths, page, footerLinks }) {
     <div>
       <Head>
         <title>The Branch Christian Church</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link
+          rel="mask-icon"
+          href="/safari-pinned-tab.svg"
+          color="#d8a574"
+        />
+        <meta name="msapplication-TileColor" content="#f6ece3" />
+        <meta name="theme-color" content="#f6ece3" />
       </Head>
       <Navbar paths={navPaths} />
       <main>
@@ -108,7 +132,6 @@ export default function Home({ navPaths, page, footerLinks }) {
             />
           </div>
         ) : null}
-        {console.log(page.pageBuilder)}
         {page.pageBuilder.map((s) => {
           switch (s._type) {
             case "banner":
@@ -126,6 +149,7 @@ export default function Home({ navPaths, page, footerLinks }) {
                   color={s.colour}
                   title={s.title}
                   image={s.image}
+                  layout={s.layout}
                   cta={s.cta}
                 >
                   {s.content}
