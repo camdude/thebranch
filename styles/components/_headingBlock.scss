@@ -1,0 +1,39 @@
+.HeadingBlock {
+  padding: 0.5rem 0;
+  text-align: center;
+
+  &__heading {
+    margin-bottom: 0;
+    text-decoration: underline;
+  }
+
+  &--primary {
+    color: $color-primary-dark;
+    background: $color-primary-light;
+  }
+
+  &--secondary {
+    color: $color-secondary-dark;
+    background: $color-secondary;
+  }
+
+  &--tertiary {
+    color: $color-tertiary;
+    background: $color-tertiary-light;
+  }
+
+  &--white {
+    color: $color-grey-dark;
+    background: $color-white;
+  }
+
+  &--grey {
+    color: $color-white;
+    background: $color-grey;
+  }
+
+  &--black {
+    color: $color-white;
+    background: $color-black;
+  }
+}

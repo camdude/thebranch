@@ -3,6 +3,8 @@ import BlockContent from "@sanity/block-content-to-react";
 import BannerImage from "../components/BannerImage";
 import Button from "../components/Button";
 import Head from "../components/Head";
+import HeadingBlock from "../components/HeadingBlock";
+import ImageGrid from "../components/ImageGrid";
 import TextBlockWithImage from "../components/TextBlockWithImage";
 import YouTube from "../components/YouTube";
 import ImageWithHideOnError from "../hooks/ImageWithHideOnError";
@@ -106,8 +108,11 @@ export default function Home({ navPaths, page, footerLinks }) {
             />
           </div>
         ) : null}
+        {console.log(page.pageBuilder)}
         {page.pageBuilder.map((s) => {
           switch (s._type) {
+            case "headingBlock":
+              return <HeadingBlock key={s._key} color={s.colour}>{s.heading}</HeadingBlock>;
             case "banner":
               return <BannerImage key={s._key} image={s.image} />;
             case "textBlock":
@@ -129,10 +134,8 @@ export default function Home({ navPaths, page, footerLinks }) {
                   {s.content}
                 </TextBlockWithImage>
               );
-            case "gallery":
-              return <div key={s._key}></div>;
-            case "form":
-              return <div key={s._key}></div>;
+            case "imageGrid":
+              return <ImageGrid key={s._key} data={s.images} />;
             case "hero":
               return <div key={s._key}></div>;
           }

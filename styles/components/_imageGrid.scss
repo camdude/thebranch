@@ -1,0 +1,35 @@
+.ImageGrid {
+  display: grid;
+  margin: 0 20%;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0%;
+  line-height: 0;
+
+  @include respond(tab-land) {
+    margin: 0 10%;
+  }
+
+  @include respond(tab-port) {
+    margin: 0;
+  }
+
+  @include respond(phone) {
+    margin: 0;
+  }
+
+  &__item {
+    aspect-ratio: 1/ 1;
+    display: flex;
+    align-items: center;
+    background-color: #1e1e1e;
+    color: #fff;
+
+    &:hover {
+      opacity: 0.5;
+      // cursor: pointer;
+    }
+
+    & > span > img {
+    }
+  }
+}
