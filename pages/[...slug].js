@@ -5,11 +5,10 @@ import ImageWithHideOnError from "../hooks/ImageWithHideOnError";
 import Section from "../layouts/Section";
 import Button from "../components/Button";
 import YouTube from "../components/YouTube";
-import Head from "next/head";
 import Navbar from "../layouts/Navbar";
 import Footer from "../layouts/Footer";
 import TextBlockWithImage from "../components/TextBlockWithImage";
-import Image from "next/image";
+import Head from "../components/Head";
 
 const overrides = {
   h1: (props) => <h1 className="block__h1" {...props} />,
@@ -96,33 +95,12 @@ export default function Page({ navPaths, page, footerLinks }) {
   if (!router.isFallback && !page?.length) {
     return (
       <div>
-        <Head>
-          <title>The Branch Christian Church</title>
-          <link
-            rel="apple-touch-icon"
-            sizes="180x180"
-            href="/apple-touch-icon.png"
-          />
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="32x32"
-            href="/favicon-32x32.png"
-          />
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="16x16"
-            href="/favicon-16x16.png"
-          />
-          <link rel="manifest" href="/site.webmanifest" />
-          <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#d8a574" />
-          <meta name="msapplication-TileColor" content="#f6ece3" />
-          <meta name="theme-color" content="#f6ece3" />
-        </Head>
+        <Head title={`The Branch | 404 - Page Not Found`} />
         <Navbar paths={navPaths} />
         <main className="main-body">
-          <h1 className="heading-primary u-center-text">ERROR 404</h1>
+          <h1 className="heading-primary u-center-text">404 - Page Not Found</h1>
+          <p className="paragraph">The page you are looking for might have been removed or temporarily unavailable.</p>
+          <Button href="/">Go back to home</Button>
         </main>
         <Footer links={footerLinks} />
       </div>
@@ -134,10 +112,7 @@ export default function Page({ navPaths, page, footerLinks }) {
   }
   return (
     <div>
-      <Head>
-        <title>The Branch Christian Church</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Head title={`The Branch | ${page[0].title}`} />
       <Navbar paths={navPaths} />
       <main>
         {page[0].coverImage ? (
