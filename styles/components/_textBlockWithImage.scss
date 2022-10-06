@@ -19,8 +19,8 @@
 
   &__block {
     // height: auto;
-    width: 75%;
-    padding: 4rem;
+    // width: 75%;
+    padding: 6rem 8rem;
 
     @include respond(tab-land) {
       padding: 4rem;
@@ -157,19 +157,29 @@
   }
 
   &__imageContainer {
-    
-    width: 25%;
-    overflow: hidden;
-    // box-sizing: content-box;
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
-
+    max-height: auto;
+    width: 50%;
     background-color: $color-black;
+    overflow: hidden;
 
     @include respond(tab-port) {
-      // max-height: 42rem;
+      display: none;
+      // max-height: auto;
       width: 100%;
+    }
+
+    @include respond(tab-land) {
+      max-height: 42rem;
+      width: 100%;
+    }
+
+    @include respond(big-desktop) {
+      width: 20%;
+    }
+
+    & > span {
+      // height: 42rem;
+      height: 100% !important;
     }
 
     & > span > img {

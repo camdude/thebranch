@@ -1,6 +1,7 @@
 import ImageWithHideOnError from "../hooks/ImageWithHideOnError";
 import { urlFor } from "../lib/api";
 import Button from "./Button";
+import LogoIcon from "../public/icon_white.png";
 
 const TextBlockWithImage = ({ children, color, title, image, layout, cta }) => {
   return (
@@ -17,7 +18,13 @@ const TextBlockWithImage = ({ children, color, title, image, layout, cta }) => {
         {cta ? <Button href={cta.btnLink._ref}>{cta.btnText}</Button> : ""}
       </div>
       <div className="TextBlockWithImage__imageContainer">
-        <ImageWithHideOnError src={urlFor(image).url()} layout="responsive" width={720} height={720} alt="" />
+        <ImageWithHideOnError
+          src={urlFor(image).url()}
+          layout="responsive"
+          width={720}
+          height={720}
+          alt=""
+        />
       </div>
     </div>
   );
