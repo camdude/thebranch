@@ -1,7 +1,7 @@
 .TextBlockWithImage {
   display: flex;
   flex-direction: row;
-  // min-height: 42rem;
+  padding: 0 20%;
   width: 100%;
 
   &--right {
@@ -12,21 +12,26 @@
     flex-direction: row-reverse;
   }
 
+  @include respond(tab-land) {
+    padding: 0 10%;
+  }
+
   @include respond(tab-port) {
+    padding: 0;
     height: auto;
     flex-direction: column;
   }
 
   &__block {
-    // height: auto;
-    // width: 75%;
-    padding: 6rem 8rem;
+    width: 50%;
+    padding: 4rem;
 
     @include respond(tab-land) {
-      padding: 4rem;
+      padding: 3rem;
     }
 
     @include respond(tab-port) {
+      padding: 4rem;
       width: 100%;
     }
 
@@ -157,34 +162,18 @@
   }
 
   &__imageContainer {
-    max-height: auto;
     width: 50%;
     background-color: $color-black;
-    overflow: hidden;
 
     @include respond(tab-port) {
       display: none;
-      // max-height: auto;
-      width: 100%;
-    }
-
-    @include respond(tab-land) {
-      max-height: 42rem;
-      width: 100%;
-    }
-
-    @include respond(big-desktop) {
-      width: 20%;
     }
 
     & > span {
-      // height: 42rem;
       height: 100% !important;
     }
 
     & > span > img {
-      // height: 42rem;
-      width: 100%;
       object-fit: cover;
     }
   }

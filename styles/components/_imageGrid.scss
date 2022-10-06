@@ -13,10 +13,6 @@
     margin: 0;
   }
 
-  @include respond(phone) {
-    margin: 0;
-  }
-
   &__item {
     aspect-ratio: 1/ 1;
     display: flex;
