@@ -15,7 +15,7 @@ const TextBlockWithImage = ({ children, color, title, image, layout, cta }) => {
           {title}
         </div>
         <div className="TextBlockWithImage__text">{children}</div>
-        {cta ? <Button href={cta.btnLink._ref}>{cta.btnText}</Button> : ""}
+        {cta ? <Button href={cta.btnLink.slug.current}>{cta.btnText}</Button> : ""}
       </div>
       <div className="TextBlockWithImage__imageContainer">
         <ImageWithHideOnError

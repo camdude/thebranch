@@ -40,7 +40,7 @@ const serializers = {
   marks: {
     internalLink: ({ mark, children }) => {
       console.log(mark);
-      const { slug = {} } = mark;
+      const { slug = {} } = mark.reference;
       const href = `/${slug.current}`;
       return (
         <a className="block__a" href={href}>
