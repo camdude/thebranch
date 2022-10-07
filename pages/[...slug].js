@@ -39,7 +39,6 @@ const serializers = {
   listItem: (props) => <li className="block__listItem" {...props} />,
   marks: {
     internalLink: ({ mark, children }) => {
-      console.log(mark);
       const { slug = {} } = mark.reference;
       const href = `/${slug.current}`;
       return (

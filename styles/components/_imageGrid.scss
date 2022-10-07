@@ -20,12 +20,13 @@
     background-color: #1e1e1e;
     color: #fff;
 
-    &:hover {
+    &--link:hover {
       opacity: 0.5;
-      // cursor: pointer;
+      cursor: pointer;
     }
 
     & > span > img {
+      object-fit: cover;
     }
   }
 }
