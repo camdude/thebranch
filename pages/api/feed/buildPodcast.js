@@ -1,5 +1,5 @@
 import { Podcast } from "podcast";
-import { getSermons, urlForAsset } from "../../../lib/api";
+import { getSermons, urlFor, urlForAsset } from "../../../lib/api";
 
 export default async function buildPodcast() {
   const baseUrl = "https://thebranch.org.au";
@@ -46,6 +46,8 @@ export default async function buildPodcast() {
   data.forEach((sermon) => {
     const preacher = sermon.preacher.firstname + " " + sermon.preacher.surname;
 
+    console.log("Sermon Series:", sermon.series);
+
     feed.addItem({
       title: sermon.title,
       description: sermon.description,
@@ -59,11 +61,13 @@ export default async function buildPodcast() {
         size: sermon.audio.asset.size,
         file: sermon.audio.asset.extension,
       }, // optional enclosure
+      itunesTitle: sermon.title,
       itunesAuthor: preacher,
       itunesExplicit: false,
       itunesSubtitle: sermon.subtitle,
       itunesSummary: sermon.description,
       //   itunesDuration: 12345,
+      itunesImage: sermon?.series ? urlFor(sermon.series.thumbnail.asset).url() : "",
       itunesNewFeedUrl: "https://newlocation.com/example.rss",
     });
   });
