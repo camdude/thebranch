@@ -9,13 +9,17 @@ import Link from "next/link";
 export default function Sermons({ navPaths, sermons, footerLinks }) {
   const tableData = [];
   sermons.forEach((s) => {
+    const sermonLink = `/sermon/${s.title.replace(/ /g, "-")}`;
+    const seriesLink = `/series/${s.series?.title.replace(/ /g, "-")}`;
     const preacher = `${s.preacher.firstname} ${s.preacher.surname}`;
+    const date = new Date(s.date).toLocaleDateString('en-us', { year:"numeric", month:"short", day:"numeric"});
+
     tableData.push([
-      [s.title, `/sermon/${s.date}`],
-      s.series?.title || "Not in a series",
+      [s.title, sermonLink],
+      s.series?.title ? [s.series.title, seriesLink] : "Not in a series",
       s.passage,
       preacher,
-      s.date,
+      date,
     ]);
   });
 

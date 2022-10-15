@@ -43,6 +43,11 @@ export default function Navbar({ paths = { sections: [] } }) {
             <a className="Navbar__link">Home</a>
           </Link>
         </li>
+        <li className="Navbar__item">
+          <Link href="/sermons">
+            <a className="Navbar__link">Sermons</a>
+          </Link>
+        </li>
         {paths.sections.map((s) => {
           return (
             <li className="Navbar__item" key={s._key}>
