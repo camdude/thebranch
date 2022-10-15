@@ -1,5 +1,5 @@
 import { Podcast } from "podcast";
-import { getSermons, urlFor, urlForAsset } from "../../../lib/api";
+import { getSermonList, urlFor } from "../../../lib/api";
 
 export default async function buildPodcast() {
   const baseUrl = "https://thebranch.org.au";
@@ -41,7 +41,7 @@ export default async function buildPodcast() {
     itunesImage: `${baseUrl}/image.png`,
   });
 
-  const data = await getSermons();
+  const data = await getSermonList();
 
   data.forEach((sermon) => {
     const preacher = sermon.preacher.firstname + " " + sermon.preacher.surname;
