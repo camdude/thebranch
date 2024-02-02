@@ -38,16 +38,6 @@ export default function Navbar({ paths = { sections: [] } }) {
         </Link>
       </div>
       <ul className={`Navbar__list ${navOpen ? "Navbar__list--open" : ""}`}>
-        <li className="Navbar__item">
-          <Link href="/">
-            <a className="Navbar__link">Home</a>
-          </Link>
-        </li>
-        <li className="Navbar__item">
-          <Link href="/sermons">
-            <a className="Navbar__link">Sermons</a>
-          </Link>
-        </li>
         {paths.sections.map((s) => {
           return (
             <li className="Navbar__item" key={s._key}>
@@ -70,6 +60,16 @@ export default function Navbar({ paths = { sections: [] } }) {
             </li>
           );
         })}
+        <li className="Navbar__item">
+          <Link href="/sermons">
+            <a className="Navbar__link">Sermons</a>
+          </Link>
+        </li>
+        <li className="Navbar__item">
+          <Link href="/calendar">
+            <a className="Navbar__link">Calendar</a>
+          </Link>
+        </li>
       </ul>
     </nav>
   );

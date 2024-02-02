@@ -1,4 +1,5 @@
 import {
+  getAllSeries,
   getFooter,
   getNavigation,
   getSeriesByTitle,
@@ -14,22 +15,21 @@ import Table from "../../components/Table";
 
 export default function Page({ navPaths, series, sermonList, footerLinks }) {
   const router = useRouter();
-  console.log(series, sermonList);
 
   const tableData = [];
-  sermonList.forEach((s) => {
-    const sermonLink = `/sermon/${s.title.replace(/ /g, "-")}`;
-    const preacher = `${s.preacher.firstname} ${s.preacher.surname}`;
-    const date = new Date(s.date).toLocaleDateString('en-us', { year:"numeric", month:"short", day:"numeric"});
+  if (sermonList) {
+    sermonList.forEach((s) => {
+      const sermonLink = `/sermon/${s.title.replace(/ /g, "-")}`;
+      const preacher = `${s.preacher.firstname} ${s.preacher.surname}`;
+      const date = new Date(s.date).toLocaleDateString("en-us", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      });
 
-    tableData.push([
-      [s.title, sermonLink],
-      s.passage,
-      preacher,
-      date,
-    ]);
-  });
-
+      tableData.push([[s.title, sermonLink], s.passage, preacher, date]);
+    });
+  }
 
   if (!router.isFallback && !series?.length) {
     return (
@@ -86,7 +86,6 @@ export async function getStaticProps({ params }) {
   const navPaths = await getNavigation();
   const series = await getSeriesByTitle(slug);
   const sermonList = await getSermonsBySeries(slug);
-  console.log(sermonList)
   const footerLinks = await getFooter();
 
   return {
@@ -96,23 +95,18 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const nav = await getNavigation();
-  var navPaths = [];
-  nav.sections.map((s) => {
-    if (s.links) {
-      s.links.map((l) => {
-        navPaths.push({
-          params: { slug: [s.target.slug.current, l.target.slug.current] },
-        });
-      });
-    }
-    navPaths.push({
-      params: { slug: [s.target.slug.current] },
+  const series = await getAllSeries();
+  var seriesPaths = [];
+
+  console.log("series/getStaticPaths", series);
+  series.map((s) => {
+    seriesPaths.push({
+      params: { slug: [s.title] },
     });
   });
 
   return {
-    paths: navPaths,
+    paths: seriesPaths,
     fallback: true,
   };
 }

@@ -2,6 +2,7 @@ import {
   getFooter,
   getNavigation,
   getSermonByTitle,
+  getSermonList,
 } from "../../lib/api";
 import { useRouter } from "next/router";
 import Button from "../../components/Button";
@@ -67,23 +68,17 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const nav = await getNavigation();
-  var navPaths = [];
-  nav.sections.map((s) => {
-    if (s.links) {
-      s.links.map((l) => {
-        navPaths.push({
-          params: { slug: [s.target.slug.current, l.target.slug.current] },
-        });
-      });
-    }
-    navPaths.push({
-      params: { slug: [s.target.slug.current] },
-    });
-  });
+  const sermons = await getSermonList();
+
+  var sermonPaths = [];
+  sermons.map((s) => {
+    sermonPaths.push({
+      params: { slug: [s.title.replace(/-/g, ' ')] },
+    })
+  })
 
   return {
-    paths: navPaths,
+    paths: sermonPaths,
     fallback: true,
   };
 }
