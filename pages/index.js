@@ -108,7 +108,6 @@ export default function Home({ navPaths, page, footerLinks }) {
             />
           </div>
         ) : null}
-        {console.log(page.pageBuilder)}
         {page.pageBuilder.map((s) => {
           switch (s._type) {
             case "headingBlock":
