@@ -4,6 +4,8 @@ import { useRouter } from "next/router";
 import ImageWithHideOnError from "../hooks/ImageWithHideOnError";
 import useExternalScripts from "../hooks/useExternalScripts";
 import Section from "../layouts/Section";
+import HeadingBlock from "../components/HeadingBlock";
+import BannerImage from "../components/BannerImage";
 import Button from "../components/Button";
 import YouTube from "../components/YouTube";
 import Navbar from "../layouts/Navbar";
@@ -139,9 +141,16 @@ export default function Page({ navPaths, page, footerLinks }) {
             />
           </div>
         ) : null}
-        {console.log(page[0].pageBuilder)}
         {page[0].pageBuilder.map((s) => {
           switch (s._type) {
+            case "headingBlock":
+              return (
+                <HeadingBlock key={s._key} color={s.colour}>
+                  {s.heading}
+                </HeadingBlock>
+              );
+            case "banner":
+              return <BannerImage key={s._key} image={s.image} />;
             case "textBlock":
               return (
                 <Section color={s.colour} key={s._key}>
@@ -165,9 +174,7 @@ export default function Page({ navPaths, page, footerLinks }) {
             case "form":
               return (
                 <Section key={s._key}>
-                  <Button
-                    href={`${s.url}?open-in-church-center-modal=true`}
-                  >
+                  <Button href={`${s.url}?open-in-church-center-modal=true`}>
                     {s.label}
                   </Button>
                 </Section>
