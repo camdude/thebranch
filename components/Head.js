@@ -1,4 +1,5 @@
 import HeadData from "next/head";
+import Script from "next/script";
 
 const Head = ({ title, children }) => {
   return (

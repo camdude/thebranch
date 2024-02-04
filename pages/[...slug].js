@@ -2,6 +2,7 @@ import BlockContent from "@sanity/block-content-to-react";
 import { getFooter, getNavigation, getPagebySlug, urlFor } from "../lib/api";
 import { useRouter } from "next/router";
 import ImageWithHideOnError from "../hooks/ImageWithHideOnError";
+import useExternalScripts from "../hooks/useExternalScripts";
 import Section from "../layouts/Section";
 import Button from "../components/Button";
 import YouTube from "../components/YouTube";
@@ -86,11 +87,19 @@ const serializers = {
     youtube: ({ node: { url } }) => {
       return <YouTube url={url} />;
     },
+    form: (props) => {
+      return (
+        <Button href={`${props.node.url}?open-in-church-center-modal=true`}>
+          {props.node.label}
+        </Button>
+      );
+    },
   },
 };
 
 export default function Page({ navPaths, page, footerLinks }) {
   const router = useRouter();
+  useExternalScripts("https://js.churchcenter.com/modal/v1");
 
   if (!router.isFallback && !page?.length) {
     return (
@@ -154,12 +163,25 @@ export default function Page({ navPaths, page, footerLinks }) {
             case "gallery":
               return <div key={s._key}></div>;
             case "form":
-              return <div key={s._key}></div>;
+              return (
+                <Section key={s._key}>
+                  <Button
+                    href={`${s.url}?open-in-church-center-modal=true`}
+                  >
+                    {s.label}
+                  </Button>
+                </Section>
+              );
             case "hero":
               return <div key={s._key}></div>;
             case "calendar":
               return (
-                <Calendar key={s._key} url={s.url} view={s.style} category={s.category} />
+                <Calendar
+                  key={s._key}
+                  url={s.url}
+                  view={s.style}
+                  category={s.category}
+                />
               );
           }
         })}
