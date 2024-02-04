@@ -18,8 +18,8 @@ export default function Calendar({ navPaths, footerLinks }) {
           <iframe
             src="https://thebranchcc.churchcenter.com/calendar?embed=true&view=list"
             style={({ width: "100%" }, { height: "500px" })}
-            class="planning-center-calender-embed"
-            frameborder="0"
+            className="planning-center-calender-embed"
+            frameBorder="0"
           ></iframe>
         </Section>
       </main>

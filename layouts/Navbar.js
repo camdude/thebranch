@@ -60,16 +60,6 @@ export default function Navbar({ paths = { sections: [] } }) {
             </li>
           );
         })}
-        <li className="Navbar__item">
-          <Link href="/sermons">
-            <a className="Navbar__link">Sermons</a>
-          </Link>
-        </li>
-        <li className="Navbar__item">
-          <Link href="/calendar">
-            <a className="Navbar__link">Calendar</a>
-          </Link>
-        </li>
       </ul>
     </nav>
   );

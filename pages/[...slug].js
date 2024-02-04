@@ -9,6 +9,7 @@ import Navbar from "../layouts/Navbar";
 import Footer from "../layouts/Footer";
 import TextBlockWithImage from "../components/TextBlockWithImage";
 import Head from "../components/Head";
+import Calendar from "../components/Calendar";
 
 const overrides = {
   h1: (props) => <h1 className="block__h1" {...props} />,
@@ -97,8 +98,13 @@ export default function Page({ navPaths, page, footerLinks }) {
         <Head title={`The Branch | 404 - Page Not Found`} />
         <Navbar paths={navPaths} />
         <main className="main-body">
-          <h1 className="heading-primary u-center-text">404 - Page Not Found</h1>
-          <p className="paragraph">The page you are looking for might have been removed or temporarily unavailable.</p>
+          <h1 className="heading-primary u-center-text">
+            404 - Page Not Found
+          </h1>
+          <p className="paragraph">
+            The page you are looking for might have been removed or temporarily
+            unavailable.
+          </p>
           <Button href="/">Go back to home</Button>
         </main>
         <Footer links={footerLinks} />
@@ -151,6 +157,10 @@ export default function Page({ navPaths, page, footerLinks }) {
               return <div key={s._key}></div>;
             case "hero":
               return <div key={s._key}></div>;
+            case "calendar":
+              return (
+                <Calendar key={s._key} url={s.url} view={s.style} category={s.category} />
+              );
           }
         })}
       </main>
